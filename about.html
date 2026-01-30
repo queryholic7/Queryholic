@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769694504/queryholic_profile-removebg-preview_azlcg4.png">
+    <title>About Queryholic - Digital Solutions Company</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <img class="image-gradient" src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769613923/gradient_y4qh5m.png" alt="Gradient">
+    <div class="layer-blur"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="index.html" class="logo-link">
+                    <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769607730/logo1_xi72sv.png" alt="Queryholic Logo" class="logo" width="110px">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">
+                             HOME
+                        </a>
+                        <a href="index.html#audience-section" class="nav-link">
+                             WHO WE SERVE
+                        </a>
+                        <a href="index.html#product-section" class="nav-link">
+                             PRODUCTS
+                        </a>
+                        <a href="index.html#process-section" class="nav-link">
+                             OUR PROCESS
+                        </a>
+                        <a href="about.html" class="nav-link active">
+                             ABOUT US
+                        </a>
+                        <a href="index.html#contact-section" class="nav-link">
+                             CONTACT
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- CTA Button - Updated to open modal -->
+                <a href="#" class="btn-nav-cta open-quote-modal">
+                     GET QUOTES
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-links">
+                <a href="index.html" class="mobile-nav-link">
+                     HOME
+                </a>
+                <a href="index.html#audience-section" class="mobile-nav-link">
+                     WHO WE SERVE
+                </a>
+                <a href="index.html#product-section" class="mobile-nav-link">
+                     PRODUCTS
+                </a>
+                <a href="index.html#process-section" class="mobile-nav-link">
+                     OUR PROCESS
+                </a>
+                <a href="about.html" class="mobile-nav-link active">
+                     ABOUT US
+                </a>
+                <a href="index.html#contact-section" class="mobile-nav-link">
+                     CONTACT
+                </a>
+                <a href="#" class="mobile-nav-cta open-quote-modal">
+                     GET QUOTES
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Get Quotes Modal -->
+    <div class="quote-modal" id="quoteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Send us a Message</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            
+            <form id="quoteForm">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <div class="form-error" id="nameError">Please enter your name</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                        <div class="form-error" id="phoneError">Please enter your phone number</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="Your.email@example.com" required>
+                        <div class="form-error" id="emailError">Please enter a valid email</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Required Service *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="Web Development">
+                            <span class="checkmark"></span>
+                            Web Development
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="Hardware Projects">
+                            <span class="checkmark"></span>
+                            Hardware Projects
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="UI/UX">
+                            <span class="checkmark"></span>
+                            UI/UX
+                        </label>
+                    </div>
+                    <div class="form-error" id="serviceError">Please select at least one service</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Tell us about your project..." rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Expected Budget *</label>
+                    <input type="text" id="budget" name="budget" placeholder="Expected budget" required>
+                    <div class="form-error" id="budgetError">Please enter your expected budget</div>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Send Message</span>
+                    <span id="btnLoading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Sending...
+                    </span>
+                </button>
+            </form>
+            
+            <div class="form-success" id="successMessage">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Message Sent!</h3>
+                <p>Thank you for contacting Queryholic. We'll get back to you within 24 hours.</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <div class="about-hero-text">
+                    <h1 class="about-title">
+                        <span class="title-line">Building Smart Solutions</span>
+                        <span class="title-line highlight">That Make An Impact</span>
+                    </h1>
+                    <p class="about-subtitle">
+                        We are a technology-focused team dedicated to building smart digital, design, and IoT solutions. 
+                        With a strong emphasis on quality, usability, and real-world impact, we help ideas grow into 
+                        reliable and meaningful solutions.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Projects Delivered</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="about-hero-image">
+                    <div class="image-container">
+                        <div class="floating-element element-1">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="floating-element element-2">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="floating-element element-3">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="hero-orb"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="sidebar-left"></span>
+                    Our Values
+                    <span class="sidebar-right"></span>
+                </h2>
+                <p class="section-subtitle">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously explore new technologies and methodologies to deliver cutting-edge, 
+                        forward-thinking solutions that keep our clients ahead of the curve.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>We believe in working closely with our clients as partners, ensuring alignment with 
+                        business objectives and fostering long-term relationships built on trust.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We are committed to quality in every aspect of our work, from initial planning to 
+                        final delivery, ensuring exceptional results that exceed expectations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Growth</h3>
+                    <p>We focus on creating solutions that scale and adapt to evolving business needs, 
+                        providing sustainable value and supporting continuous improvement.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We maintain transparency, honesty, and ethical practices in all our interactions, 
+                        building trust through reliability and consistent delivery on promises.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Passion</h3>
+                    <p>Our team is driven by genuine passion for technology and problem-solving, 
+                        ensuring dedicated attention and enthusiasm for every project we undertake.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="sidebar-left"></span>
+                    Why Choose Queryholic
+                    <span class="sidebar-right"></span>
+                </h2>
+                <p class="section-subtitle">What sets us apart in the digital solutions space</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Student-Friendly</h3>
+                        <p>Special pricing and guidance for students working on academic projects, theses, 
+                            or building their portfolios.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Business-Focused</h3>
+                        <p>Solutions designed to drive real business value, improve efficiency, and 
+                            enhance customer engagement.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Startup-Oriented</h3>
+                        <p>MVP development and scalable solutions for startups looking to validate ideas 
+                            and secure funding.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Cost-Effective</h3>
+                        <p>High-quality solutions at competitive prices without compromising on quality 
+                            or functionality.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock technical support and maintenance to ensure your solutions 
+                            run smoothly always.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Agile Methodology</h3>
+                        <p>Flexible, iterative development process that adapts to changing requirements 
+                            and delivers faster.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Bring Your Ideas to Life?</h2>
+                <p>Whether you're a student with a project, a startup with a vision, or a business 
+                    seeking digital transformation, we're here to help you succeed.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/919597533152?text=Hello%20Queryholic%20I%20need%20consultation%20for%20my%20project" 
+                       class="btn-cta-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Start a Conversation
+                    </a>
+                    <a href="index.html#product-section" class="btn-cta-secondary">
+                        <i class="fas fa-cube"></i> Explore Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact-section">
+        <div class="footer-box">
+            <div class="footer-content">
+                
+                <div class="footer-content-sec" id="footer-logo">
+                    <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769607730/logo1_xi72sv.png" alt="Queryholic Logo" class="logo" width="200px" >
+                    <div class="footer-media">
+                        <a href="#"><img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606772/facebook_qyaqmr.png" alt="Facebook" class="media-logo"></a>
+                        <a href="https://www.instagram.com/queryholic?igsh=NnlrOXo0NHJwNDcx" target="_blank"><img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606798/instagram_xhiml7.png" alt="Instagram" class="media-logo" ></a>
+                        <a href="#"><img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606836/linkedin_y6wnym.png" alt="LinkedIn" class="media-logo"></a>
+                    </div>
+                </div>
+
+                <div class="footer-content-sec" id="quick">
+                    <h1>QUICK LINKS</h1>
+                    <ul>
+                        <li><a href="index.html#product-section">PRODUCTS</a></li>
+                        <li><a href="about.html">ABOUT US</a></li>
+                        <li><a href="#contact-section">CONTACT US</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content-sec" id="legal">
+                    <h1>LEGALS</h1>
+                    <ul>
+                        <li><a href="#">PRIVACY & POLICY</a></li>
+                        <li><a href="#">TERMS & CONDITIONS</a></li>
+                        <li><a href="#">COOKIE POLICY</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content-sec" id="footer-contact">
+                    <h1>CONTACT US</h1>
+                    
+                    <div class="mail">
+                        <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606863/mail_lznmp1.png" alt="Mail Icon" class="mail-icon">
+                        <a href="mailto:queryholic@gmail.com">queryholic@gmail.com</a>
+                    </div>
+                    
+                    <div class="call">
+                        <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606773/call_oxo6q0.png" alt="Call Icon" class="call-icon">
+                        <a href="tel:+919597533152">+91 95975 33152</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="footer-rights">
+                <p>© 2024 Queryholic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/919597533152?text=Hello%20I%20want%20to%20get%20quotes" class="whatsapp-container" target="_blank">
+        <span class="whatsapp-text">Get Quotes</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat on WhatsApp" class="whatsapp-icon">   
+    </a>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.39/build/spline-viewer.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        AOS.init();
+
+        // Initialize EmailJS - REPLACE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+        (function() {
+            emailjs.init("KZiTEb11OsZ3zece2");
+        })();
+
+        // Modal Elements
+        const quoteModal = document.getElementById('quoteModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const openModalBtns = document.querySelectorAll('.open-quote-modal');
+        const quoteForm = document.getElementById('quoteForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+
+        // Open Modal
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                quoteModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close Modal
+        closeModalBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside
+        quoteModal.addEventListener('click', function(e) {
+            if (e.target === quoteModal) {
+                closeModal();
+            }
+        });
+
+        // Close modal function
+        function closeModal() {
+            quoteModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset form if success message is showing
+            if (successMessage.style.display === 'block') {
+                successMessage.style.display = 'none';
+                quoteForm.style.display = 'block';
+                quoteForm.reset();
+                hideAllErrors();
+            }
+        }
+
+        // Form validation for checkboxes
+        function validateForm() {
+            let isValid = true;
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const serviceCheckboxes = document.querySelectorAll('input[name="service"]:checked');
+            const budget = document.getElementById('budget');
+
+            // Hide all errors first
+            hideAllErrors();
+
+            // Validate name
+            if (!name.value.trim()) {
+                showError('nameError', 'Please enter your name');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                showError('emailError', 'Please enter your email');
+                isValid = false;
+            } else if (!emailRegex.test(email.value)) {
+                showError('emailError', 'Please enter a valid email');
+                isValid = false;
+            }
+
+            // Validate phone
+            if (!phone.value.trim()) {
+                showError('phoneError', 'Please enter your phone number');
+                isValid = false;
+            }
+
+            // Validate at least one service checkbox is checked
+            if (serviceCheckboxes.length === 0) {
+                showError('serviceError', 'Please select at least one service');
+                isValid = false;
+            }
+
+            // Validate budget
+            if (!budget.value.trim()) {
+                showError('budgetError', 'Please enter your expected budget');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function showError(errorId, message) {
+            const errorElement = document.getElementById(errorId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideAllErrors() {
+            const errors = document.querySelectorAll('.form-error');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
+        }
+
+        // Form submission
+        quoteForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            submitBtn.disabled = true;
+
+            try {
+                // Get selected services as comma-separated string
+                const selectedServices = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+                    .map(checkbox => checkbox.value)
+                    .join(', ');
+
+                // Prepare template parameters
+                const templateParams = {
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    service: selectedServices,
+                    description: document.getElementById('description').value || 'Not provided',
+                    budget: document.getElementById('budget').value,
+                    to_email: 'queryholic@gmail.com',
+                    date: new Date().toLocaleString()
+                };
+
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'service_s7vvoxa',
+                    'template_jp6lzhp',
+                    templateParams
+                );
+
+                // Show success message
+                quoteForm.style.display = 'none';
+                successMessage.style.display = 'block';
+
+            } catch (error) {
+                console.error('Failed to send email:', error);
+                alert('Sorry, there was an error sending your message. Please try again or contact us directly at queryholic@gmail.com');
+                
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const body = document.body;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('no-scroll');
+            }
+        });
+
+        // Floating elements animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.floating-element');
+            
+            elements.forEach((element, index) => {
+                // Random delay for each element
+                element.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                if (href === '#') return;
+                
+                if (href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    mobileNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            service: selectedServices, // This should be comma-separated
+            description: document.getElementById('description').value || 'Not provided',
+            budget: document.getElementById('budget').value,
+            date: new Date().toLocaleString()
+        };
+        // Add this to your existing JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add selected class to checked checkboxes
+            const updateCheckboxStyles = () => {
+                document.querySelectorAll('.checkbox-label').forEach(label => {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+                    if (checkbox.checked) {
+                        label.classList.add('selected');
+                    } else {
+                        label.classList.remove('selected');
+                    }
+                });
+                
+                // Update selected count
+                const selectedCount = document.querySelectorAll('input[name="service"]:checked').length;
+                const countElement = document.querySelector('.selected-count');
+                if (countElement) {
+                    countElement.textContent = selectedCount;
+                }
+            };
+            
+            // Initial update
+            updateCheckboxStyles();
+            
+            // Update on change
+            document.querySelectorAll('input[name="service"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateCheckboxStyles);
+            });
+            
+            // Add service icons dynamically
+            const serviceIcons = {
+                'Web Development': 'fas fa-code',
+                'UI/UX': 'fas fa-paint-brush',
+                'Video Editing': 'fas fa-video',
+                'Digital Marketing': 'fas fa-bullhorn'
+            };
+            
+            document.querySelectorAll('.checkbox-label').forEach(label => {
+                const text = label.querySelector('span').textContent.trim();
+                if (serviceIcons[text]) {
+                    const icon = document.createElement('i');
+                    icon.className = serviceIcons[text] + ' service-icon';
+                    label.querySelector('span').insertBefore(icon, label.querySelector('span').firstChild);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
