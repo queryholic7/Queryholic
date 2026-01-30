@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769694504/queryholic_profile-removebg-preview_azlcg4.png">
+    <title>Queryholic - Digital Solutions</title>
+    <meta name="description" content="Queryholic provides modern web development, UI/UX design, and IoT solutions for students, startups, and businesses.">
+    <meta name="keywords" content="Queryholic, web development, UI UX, IoT projects, student projects, startup solutions">
+    <meta name="author" content="Queryholic">
+    <meta property="og:title" content="Queryholic – Digital Solutions">
+    <meta property="og:description" content="Smart digital, UI/UX, and IoT solutions for students, startups, and businesses.">
+    <meta property="og:url" content="https://queryholic.in">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://queryholic.in/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7104597577575970"
+     crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-7104597577575970">
+</head>
+<body>
+    
+    <img class="image-gradient" src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769613923/gradient_y4qh5m.png" alt="Gradient">
+    <div class="layer-blur"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="index.html" class="logo-link">
+                    <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769607730/logo1_xi72sv.png" alt="Queryholic Logo" class="logo" width="110px">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link active">
+                             HOME
+                        </a>
+                        <a href="#audience-section" class="nav-link">
+                             WHO WE SERVE
+                        </a>
+                        <a href="#product-section" class="nav-link">
+                             PRODUCTS
+                        </a>
+                        <a href="#process-section" class="nav-link">
+                             OUR PROCESS
+                        </a>
+                        <a href="about.html" class="nav-link">
+                             ABOUT US
+                        </a>
+                        <a href="#contact-section" class="nav-link">
+                             CONTACT
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- CTA Button - Updated to open modal -->
+                <a href="#" class="btn-nav-cta open-quote-modal">
+                     GET QUOTES
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-links">
+                <a href="index.html" class="mobile-nav-link active">
+                     HOME
+                </a>
+                <a href="#audience-section" class="mobile-nav-link">
+                     WHO WE SERVE
+                </a>
+                <a href="#product-section" class="mobile-nav-link">
+                     PRODUCTS
+                </a>
+                <a href="#process-section" class="mobile-nav-link">
+                     OUR PROCESS
+                </a>
+                <a href="about.html" class="mobile-nav-link">
+                     ABOUT US
+                </a>
+                <a href="#contact-section" class="mobile-nav-link">
+                     CONTACT
+                </a>
+                <a href="#" class="mobile-nav-cta open-quote-modal">
+                     GET QUOTES
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Get Quotes Modal -->
+    <div class="quote-modal" id="quoteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Send us a Message</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            
+            <form id="quoteForm">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <div class="form-error" id="nameError">Please enter your name</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                        <div class="form-error" id="phoneError">Please enter your phone number</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="Your.email@example.com" required>
+                        <div class="form-error" id="emailError">Please enter a valid email</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Required Service *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="Web Development">
+                            <span class="checkmark"></span>
+                            Web Development
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="Hardware Projects">
+                            <span class="checkmark"></span>
+                            Hardware Projects
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="UI/UX">
+                            <span class="checkmark"></span>
+                            UI/UX
+                        </label>
+                    </div>
+                    <div class="form-error" id="serviceError">Please select at least one service</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Tell us about your project..." rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Expected Budget *</label>
+                    <input type="text" id="budget" name="budget" placeholder="Expected budget" required>
+                    <div class="form-error" id="budgetError">Please enter your expected budget</div>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Send Message</span>
+                    <span id="btnLoading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Sending...
+                    </span>
+                </button>
+            </form>
+            
+            <div class="form-success" id="successMessage">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Message Sent!</h3>
+                <p>Thank you for contacting Queryholic. We'll get back to you within 24 hours.</p>
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <main>
+            <div class="content">
+                
+                <h2>CRAFTING <i>DIGITAL</i><br>EXPERIENCES</h2>
+                
+                <p class="description" id="typing-text"></p>
+                
+                <div class="buttons">
+                    <a href="#product-section" class="btn-get-started">Explore Services &gt;</a>
+                    <a href="#" class="btn-signing-main open-quote-modal">Get Quotes&gt;</a>
+                </div>
+
+            </div>
+        </main>
+        <spline-viewer class="robot-3d" url="https://prod.spline.design/79AnHZjQkoMlzOW9/scene.splinecode"></spline-viewer>
+    </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.39/build/spline-viewer.js"></script>
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        AOS.init();
+
+        // Initialize EmailJS - REPLACE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+        (function() {
+            emailjs.init("KZiTEb11OsZ3zece2");
+        })();
+
+        // Typing Effect
+        const textToType = "We create modern, reliable, and high-performing digital solutions tailored to your goals. Whether you are a business, a fast-growing startup, or a student building your first digital presence, we deliver simple, scalable, and professionally designed experiences that help you grow with confidence.";
+        const descriptionElement = document.getElementById('typing-text');
+        const typingSpeed = 5;
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                descriptionElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            }
+        }
+
+        // Start typing when page loads
+        window.addEventListener("load", typeWriter);
+
+
+        // Modal Elements
+        const quoteModal = document.getElementById('quoteModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const openModalBtns = document.querySelectorAll('.open-quote-modal');
+        const quoteForm = document.getElementById('quoteForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+
+        // Open Modal
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                quoteModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close Modal
+        closeModalBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside
+        quoteModal.addEventListener('click', function(e) {
+            if (e.target === quoteModal) {
+                closeModal();
+            }
+        });
+
+        // Close modal function
+        function closeModal() {
+            quoteModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset form if success message is showing
+            if (successMessage.style.display === 'block') {
+                successMessage.style.display = 'none';
+                quoteForm.style.display = 'block';
+                quoteForm.reset();
+                hideAllErrors();
+            }
+        }
+
+        // Form validation for checkboxes
+        function validateForm() {
+            let isValid = true;
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const serviceCheckboxes = document.querySelectorAll('input[name="service"]:checked');
+            const budget = document.getElementById('budget');
+
+            // Hide all errors first
+            hideAllErrors();
+
+            // Validate name
+            if (!name.value.trim()) {
+                showError('nameError', 'Please enter your name');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                showError('emailError', 'Please enter your email');
+                isValid = false;
+            } else if (!emailRegex.test(email.value)) {
+                showError('emailError', 'Please enter a valid email');
+                isValid = false;
+            }
+
+            // Validate phone
+            if (!phone.value.trim()) {
+                showError('phoneError', 'Please enter your phone number');
+                isValid = false;
+            }
+
+            // Validate at least one service checkbox is checked
+            if (serviceCheckboxes.length === 0) {
+                showError('serviceError', 'Please select at least one service');
+                isValid = false;
+            }
+
+            // Validate budget
+            if (!budget.value.trim()) {
+                showError('budgetError', 'Please enter your expected budget');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function showError(errorId, message) {
+            const errorElement = document.getElementById(errorId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideAllErrors() {
+            const errors = document.querySelectorAll('.form-error');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
+        }
+
+        // Form submission
+        quoteForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            submitBtn.disabled = true;
+
+            try {
+                // Get selected services as comma-separated string
+                const selectedServices = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+                    .map(checkbox => checkbox.value)
+                    .join(', ');
+
+                // Prepare template parameters
+                const templateParams = {
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    service: selectedServices,
+                    description: document.getElementById('description').value || 'Not provided',
+                    budget: document.getElementById('budget').value,
+                    to_email: 'queryholic@gmail.com',
+                    date: new Date().toLocaleString()
+                };
+
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'service_s7vvoxa',
+                    'template_jp6lzhp',
+                    templateParams
+                );
+
+                // Show success message
+                quoteForm.style.display = 'none';
+                successMessage.style.display = 'block';
+
+            } catch (error) {
+                console.error('Failed to send email:', error);
+                alert('Sorry, there was an error sending your message. Please try again or contact us directly at queryholic@gmail.com');
+                
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const body = document.body;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('no-scroll');
+            }
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Skip if it's just "#"
+                if (href === '#') return;
+                
+                // Don't prevent default for external links or mailto/tel
+                if (href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    mobileNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                    
+                    // Smooth scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Set active nav link based on scroll position
+        function setActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === `#${current}` || (current === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', setActiveNavLink);
+        // Add this to your existing JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add selected class to checked checkboxes
+            const updateCheckboxStyles = () => {
+                document.querySelectorAll('.checkbox-label').forEach(label => {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+                    if (checkbox.checked) {
+                        label.classList.add('selected');
+                    } else {
+                        label.classList.remove('selected');
+                    }
+                });
+                
+                // Update selected count
+                const selectedCount = document.querySelectorAll('input[name="service"]:checked').length;
+                const countElement = document.querySelector('.selected-count');
+                if (countElement) {
+                    countElement.textContent = selectedCount;
+                }
+            };
+            
+            // Initial update
+            updateCheckboxStyles();
+            
+            // Update on change
+            document.querySelectorAll('input[name="service"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateCheckboxStyles);
+            });
+            
+            // Add service icons dynamically
+            const serviceIcons = {
+                'Web Development': 'fas fa-code',
+                'UI/UX': 'fas fa-paint-brush',
+                'Video Editing': 'fas fa-video',
+                'Digital Marketing': 'fas fa-bullhorn'
+            };
+            
+            document.querySelectorAll('.checkbox-label').forEach(label => {
+                const text = label.querySelector('span').textContent.trim();
+                if (serviceIcons[text]) {
+                    const icon = document.createElement('i');
+                    icon.className = serviceIcons[text] + ' service-icon';
+                    label.querySelector('span').insertBefore(icon, label.querySelector('span').firstChild);
+                }
+            });
+        });
+    </script>
+
+    <!-- WHO WE SERVE SECTION -->
+    <section class="audience-section" id="audience-section"> 
+        <div class="section-head">
+            <h1><div class="sidebar"></div>WHO WE SERVE<div class="sidebar"></div></h1>
+        </div>
+        <div class="audience-content">
+            <div class="audience-card">
+                <div class="audience-icon">👨‍💼</div>
+                <h3><i>PROFESSIONALS</i> & BUSINESSES</h3>
+                <p>Scalable digital solutions to grow your enterprise, enhance online presence, and streamline operations.</p>
+                <ul>
+                    <li>Enterprise Web Applications</li>
+                    <li>Business Automation</li>
+                    <li>E-commerce Solutions</li>
+                    <li>Digital Transformation</li>
+                </ul>
+            </div>
+            
+            <div class="audience-card">
+                <div class="audience-icon">🎓</div>
+                <h3><i>STUDENTS</i> & ACADEMIA</h3>
+                <p>Project guidance, thesis assistance, and portfolio development to launch your tech career.</p>
+                <ul>
+                    <li>Academic Projects</li>
+                    <li>Thesis Implementation</li>
+                    <li>Portfolio Development</li>
+                    <li>Skill Enhancement</li>
+                </ul>
+            </div>
+            
+            <div class="audience-card">
+                <div class="audience-icon">🚀</div>
+                <h3><i>STARTUPS</i> & INNOVATORS</h3>
+                <p>MVP development, prototyping, and tech consultation to turn your ideas into market-ready solutions.</p>
+                <ul>
+                    <li>MVP Development</li>
+                    <li>Prototyping</li>
+                    <li>Tech Consultation</li>
+                    <li>Funding Preparation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="product" id="product-section"> 
+        <div class="product-head">
+            <h1><div class="sidebar"></div>OUR PRODUCTS<div class="sidebar"></div></h1>
+        </div>
+        <div class="product-content">
+            <div class="product-card">
+                <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606870/web_dev_icon_suly0v.png" class="card-logo">
+                <h1><i>WEB</i> DEVELOPMENT</h1>
+                <p>Building websites that build your business.We provide complete digital and technical solutions from building powerful digital platforms </p>
+                <ul>
+                    <li>Responsive Design</li>
+                    <li>SEO Optimization</li>
+                    <li>Performance Optimization</li>
+                    <li>Security Implementation</li>
+                    <li>Content Management</li>
+                    <li>User Experience Enhancement</li>
+                    <li>Deployment & Hosting Setup</li>
+                </ul>
+                <a href="https://wa.me/919597533152?text=Hello%20Queryholic%20I%20Want%20to%20get%20quotes%20for%20web%20development" class="card-button" target="_blank">GET QUOTES &#8594;</a>
+            </div>
+            <div class="product-card">
+                <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606837/iot_1_znxoou.png" class="card-logo">
+                <h1><i>HARDWARE</i> PROJECTS</h1>
+                <p>We build smart IoT solutions that seamlessly connect devices, data, and software to transform ideas into reliable, real-world applications.</p>
+                <ul>
+                    <li>Prototyping & Development</li>
+                    <li>Sensor Integration</li>
+                    <li>Connectivity Solutions</li>
+                    <li>Cloud Integration</li>
+                    <li>Data Analytics</li>
+                    <li>Security Implementation</li>
+                    <li>Maintenance & Support</li>
+                </ul>
+                <a href="https://wa.me/919597533152?text=Hello%20Queryholic%20I%20Want%20to%20get%20quotes%20for%20hardware%20projects" class="card-button" target="_blank">GET QUOTES &#8594;</a>
+            </div>
+            <div class="product-card">
+                <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606876/ui_1_qyb12m.png" class="card-logo">
+                <h1><i>UI/UX</i> DESIGN</h1>
+                <p>We design intuitive and visually engaging user experiences that focus on clarity, usability, and meaningful interaction.</p>
+                <ul>
+                    <li>User Research & Analysis</li>
+                    <li>Wireframing & Prototyping</li>
+                    <li>Visual Design</li>
+                    <li>Interaction Design</li>
+                    <li>Usability Testing</li>
+                    <li>Responsive Design</li>
+                    <li>Design Systems & Guidelines</li>
+                </ul>
+                <a href="https://wa.me/919597533152?text=Hello%20Queryholic%20I%20Want%20to%20get%20quotes%20for%20ui/ux%20design" class="card-button" target="_blank">GET QUOTES &#8594;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process-section" id="process-section"> 
+        <div class="section-head">
+            <h1><div class="sidebar"></div>OUR PROCESS<div class="sidebar"></div></h1>
+        </div>
+        <div class="process-content">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3>DISCOVERY & PLANNING</h3>
+                <p>We understand your requirements, goals, and constraints to create a detailed project roadmap.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3>DESIGN & PROTOTYPING</h3>
+                <p>Creating wireframes, mockups, and prototypes to visualize the final product.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3>DEVELOPMENT & TESTING</h3>
+                <p>Agile development with regular testing and quality assurance at every stage.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h3>DEPLOYMENT & SUPPORT</h3>
+                <p>Launching your solution and providing ongoing maintenance and support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Get a free consultation and quote for your project today.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919597533152?text=Hello%20Queryholic%20I%20need%20consultation%20for%20my%20project" class="btn-cta" target="_blank">
+                    Start a Conversation
+                </a>
+                <a href="tel:+919597533152" class="btn-cta-secondary">
+                    Call: +91 95975 33152
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact-section">
+        <div class="footer-box">
+            <div class="footer-content">
+                
+                <div class="footer-content-sec" id="footer-logo">
+                    <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769607730/logo1_xi72sv.png" alt="Queryholic Logo" class="logo" width="200px" >
+                    <div class="footer-media">
+                        <a href="#"><img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606772/facebook_qyaqmr.png" alt="Facebook" class="media-logo"></a>
+                        <a href="https://www.instagram.com/queryholic?igsh=NnlrOXo0NHJwNDcx" target="_blank"><img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606798/instagram_xhiml7.png" alt="Instagram" class="media-logo" ></a>
+                        <a href="#"><img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606836/linkedin_y6wnym.png" alt="LinkedIn" class="media-logo"></a>
+                    </div>
+                </div>
+
+                <div class="footer-content-sec" id="quick">
+                    <h1>QUICK LINKS</h1>
+                    <ul>
+                        <li><a href="#product-section">PRODUCTS</a></li>
+                        <li><a href="about.html">ABOUT US</a></li>
+                        <li><a href="#contact-section">CONTACT US</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content-sec" id="legal">
+                    <h1>LEGALS</h1>
+                    <ul>
+                        <li><a href="#">PRIVACY & POLICY</a></li>
+                        <li><a href="#">TERMS & CONDITIONS</a></li>
+                        <li><a href="#">COOKIE POLICY</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content-sec" id="footer-contact">
+                    <h1>CONTACT US</h1>
+                    
+                    <div class="mail">
+                        <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606863/mail_lznmp1.png" alt="Mail Icon" class="mail-icon">
+                        <a href="mailto:queryholic@gmail.com">queryholic@gmail.com</a>
+                    </div>
+                    
+                    <div class="call">
+                        <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769606773/call_oxo6q0.png" alt="Call Icon" class="call-icon">
+                        <a href="tel:+919597533152">+91 95975 33152</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="footer-rights">
+                <p>© 2024 Queryholic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/919597533152?text=Hello%20I%20want%20to%20get%20quotes" class="whatsapp-container" target="_blank">
+        <span class="whatsapp-text">Get Quotes</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat on WhatsApp" class="whatsapp-icon">   
+    </a>
+
+</body>
+</html>
