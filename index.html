@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769694504/queryholic_profile-removebg-preview_azlcg4.png">
     <title>Queryholic - Digital Solutions</title>
-    <meta name="description" content="Queryholic provides modern web development, UI/UX design, and IoT solutions for students, startups, and businesses.We are a technology-focused team dedicated to building smart digital, design, and IoT solutions. With a strong emphasis on quality, usability, and real-world impact, we help ideas grow into reliable and meaningful solutions.">
+    <meta name="description" content="Queryholic provides modern web development, UI/UX design, and IoT solutions for students, startups, and businesses.">
     <meta name="keywords" content="Queryholic, web development, UI UX, IoT projects, student projects, startup solutions">
     <meta name="author" content="Queryholic">
     <meta property="og:title" content="Queryholic – Digital Solutions">
     <meta property="og:description" content="Smart digital, UI/UX, and IoT solutions for students, startups, and businesses.">
     <meta property="og:url" content="https://queryholic.in">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769878016/queryholic_profile_espopm.png">
+    <meta property="og:image" content="https://queryholic.in/favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -286,44 +286,86 @@
         // Modal Elements
         const quoteModal = document.getElementById('quoteModal');
         const closeModalBtn = document.getElementById('closeModal');
-        const openModalBtns = document.querySelectorAll('.open-quote-modal');
         const quoteForm = document.getElementById('quoteForm');
         const successMessage = document.getElementById('successMessage');
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
         const btnLoading = document.getElementById('btnLoading');
 
-        // Open Modal
-        openModalBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Function to open modal
+        function openQuoteModal(e) {
+            if (e) e.preventDefault();
+            if (quoteModal) {
                 quoteModal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-            });
-        });
-
-        // Close Modal
-        closeModalBtn.addEventListener('click', closeModal);
-        
-        // Close modal when clicking outside
-        quoteModal.addEventListener('click', function(e) {
-            if (e.target === quoteModal) {
-                closeModal();
-            }
-        });
-
-        // Close modal function
-        function closeModal() {
-            quoteModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            // Reset form if success message is showing
-            if (successMessage.style.display === 'block') {
-                successMessage.style.display = 'none';
-                quoteForm.style.display = 'block';
-                quoteForm.reset();
-                hideAllErrors();
+                console.log('Modal opened');
             }
         }
+
+        // Function to close modal
+        function closeQuoteModal() {
+            if (quoteModal) {
+                quoteModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                // Reset form if success message is showing
+                if (successMessage.style.display === 'block') {
+                    successMessage.style.display = 'none';
+                    quoteForm.style.display = 'block';
+                    quoteForm.reset();
+                    hideAllErrors();
+                }
+            }
+        }
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            
+            // Attach click events to all modal openers
+            const allModalOpeners = document.querySelectorAll('.open-quote-modal');
+            console.log('Found modal openers:', allModalOpeners.length);
+            
+            allModalOpeners.forEach(btn => {
+                btn.addEventListener('click', openQuoteModal);
+            });
+            
+            // Specifically attach to floating button (double check)
+            const floatingButton = document.querySelector('.quote-float');
+            if (floatingButton) {
+                console.log('Floating button found, attaching click event');
+                // Remove any existing listeners first
+                const newFloatingBtn = floatingButton.cloneNode(true);
+                floatingButton.parentNode.replaceChild(newFloatingBtn, floatingButton);
+                
+                // Add click event to the new button
+                newFloatingBtn.addEventListener('click', openQuoteModal);
+                newFloatingBtn.classList.add('open-quote-modal'); // Ensure it has the class
+                
+                // Debug click
+                newFloatingBtn.addEventListener('click', function(e) {
+                    console.log('Floating button clicked!');
+                });
+            }
+            
+            // Close Modal
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeQuoteModal);
+            }
+            
+            // Close modal when clicking outside
+            if (quoteModal) {
+                quoteModal.addEventListener('click', function(e) {
+                    if (e.target === quoteModal) {
+                        closeQuoteModal();
+                    }
+                });
+            }
+            
+            // Form submission
+            if (quoteForm) {
+                quoteForm.addEventListener('submit', handleFormSubmit);
+            }
+        });
 
         // Form validation
         function validateForm() {
@@ -401,8 +443,10 @@
 
         function showError(errorId, message) {
             const errorElement = document.getElementById(errorId);
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
         }
 
         function hideError(errorId) {
@@ -419,8 +463,8 @@
             });
         }
 
-        // Form submission
-        quoteForm.addEventListener('submit', async function(e) {
+        // Form submission handler
+        async function handleFormSubmit(e) {
             e.preventDefault();
             
             if (!validateForm()) {
@@ -428,9 +472,11 @@
             }
 
             // Show loading state
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline';
-            submitBtn.disabled = true;
+            if (btnText && btnLoading && submitBtn) {
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline';
+                submitBtn.disabled = true;
+            }
 
             try {
                 // Get selected services as comma-separated string
@@ -473,48 +519,54 @@
                 );
 
                 // Show success message
-                quoteForm.style.display = 'none';
-                successMessage.style.display = 'block';
+                if (quoteForm && successMessage) {
+                    quoteForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                }
 
             } catch (error) {
                 console.error('Failed to send email:', error);
                 alert('Sorry, there was an error sending your message. Please try again or contact us directly at queryholic@gmail.com');
                 
                 // Reset button state
-                btnText.style.display = 'inline';
-                btnLoading.style.display = 'none';
-                submitBtn.disabled = false;
+                if (btnText && btnLoading && submitBtn) {
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                    submitBtn.disabled = false;
+                }
             }
-        });
+        }
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileNav = document.querySelector('.mobile-nav');
         const body = document.body;
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-            body.classList.toggle('no-scroll');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                body.classList.remove('no-scroll');
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+                body.classList.toggle('no-scroll');
             });
-        });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                mobileNav.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                body.classList.remove('no-scroll');
-            }
-        });
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                }
+            });
+        }
 
         // Smooth scrolling for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -534,9 +586,11 @@
                 
                 if (targetElement) {
                     // Close mobile menu if open
-                    mobileNav.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                    body.classList.remove('no-scroll');
+                    if (mobileNav && mobileMenuBtn) {
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                        body.classList.remove('no-scroll');
+                    }
                     
                     // Smooth scroll to target
                     window.scrollTo({
@@ -551,17 +605,19 @@
         let lastScrollTop = 0;
         const header = document.querySelector('header');
         
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
+        if (header) {
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        }
 
         // Set active nav link based on scroll position
         function setActiveNavLink() {
@@ -613,6 +669,26 @@
             });
         });
         
+        // Additional floating button fix - wait for everything to load
+        window.addEventListener('load', function() {
+            console.log('Page fully loaded');
+            
+            // One more check for the floating button
+            const floatBtn = document.querySelector('.quote-float');
+            if (floatBtn && !floatBtn.hasEventListener) {
+                console.log('Final floating button check - adding click listener');
+                floatBtn.addEventListener('click', function(e) {
+                    console.log('Floating button clicked from load event');
+                    e.preventDefault();
+                    const modal = document.getElementById('quoteModal');
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+                floatBtn.hasEventListener = true; // Mark as having listener
+            }
+        });
     </script>
 
     <!-- WHO WE SERVE SECTION -->
