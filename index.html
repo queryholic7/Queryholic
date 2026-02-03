@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769878016/queryholic_profile_espopm.png">
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769694504/queryholic_profile-removebg-preview_azlcg4.png">
     <title>Queryholic - Digital Solutions</title>
     <meta name="description" content="Queryholic provides modern web development, UI/UX design, and IoT solutions for students, startups, and businesses.">
     <meta name="keywords" content="Queryholic, web development, UI UX, IoT projects, student projects, startup solutions">
@@ -162,6 +162,17 @@
                     <div class="form-error" id="budgetError">Please enter your expected budget</div>
                 </div>
                 
+                <!-- CLEAN DATE FIELD -->
+                <div class="form-group date-field">
+                    <label for="expected_date">Expected Project Start Date *</label>
+                    <div class="date-input-container">
+                        <input type="date" id="expected_date" name="expected_date" required>
+                        <i class="fas fa-calendar-alt date-icon"></i>
+                    </div>
+                    <small class="date-hint"></small>
+                    <div class="form-error" id="dateError"></div>
+                </div>
+                
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <span id="btnText">Send Message</span>
                     <span id="btnLoading" style="display: none;">
@@ -207,7 +218,7 @@
     <script>
         AOS.init();
 
-        // Initialize EmailJS - REPLACE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+        // Initialize EmailJS
         (function() {
             emailjs.init("KZiTEb11OsZ3zece2");
         })();
@@ -229,6 +240,48 @@
         // Start typing when page loads
         window.addEventListener("load", typeWriter);
 
+        // Set minimum date to tomorrow for date input
+        document.addEventListener('DOMContentLoaded', function() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+            const dateInput = document.getElementById('expected_date');
+            
+            if (dateInput) {
+                dateInput.min = tomorrowFormatted;
+                
+                // Add real-time validation
+                dateInput.addEventListener('input', function() {
+                    validateDateInput(this);
+                });
+                
+                dateInput.addEventListener('blur', function() {
+                    validateDateInput(this, true);
+                });
+            }
+        });
+
+        // Function to validate date input
+        function validateDateInput(dateInput, showError = false) {
+            const selectedDate = new Date(dateInput.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Remove previous validation classes
+            dateInput.classList.remove('error', 'valid');
+            
+            if (dateInput.value) {
+                if (selectedDate >= today) {
+                    dateInput.classList.add('valid');
+                    if (showError) hideError('dateError');
+                } else {
+                    dateInput.classList.add('error');
+                    if (showError) {
+                        showError('dateError', 'Date must be in the future');
+                    }
+                }
+            }
+        }
 
         // Modal Elements
         const quoteModal = document.getElementById('quoteModal');
@@ -272,7 +325,7 @@
             }
         }
 
-        // Form validation for checkboxes
+        // Form validation
         function validateForm() {
             let isValid = true;
             const name = document.getElementById('name');
@@ -280,9 +333,13 @@
             const phone = document.getElementById('phone');
             const serviceCheckboxes = document.querySelectorAll('input[name="service"]:checked');
             const budget = document.getElementById('budget');
+            const expectedDate = document.getElementById('expected_date');
 
             // Hide all errors first
             hideAllErrors();
+            
+            // Remove previous validation classes from date
+            if (expectedDate) expectedDate.classList.remove('error', 'valid');
 
             // Validate name
             if (!name.value.trim()) {
@@ -318,6 +375,27 @@
                 isValid = false;
             }
 
+            // Validate expected date - MUST BE FUTURE DATE
+            if (!expectedDate.value) {
+                showError('dateError', 'Please select expected project start date');
+                if (expectedDate) expectedDate.classList.add('error');
+                isValid = false;
+            } else {
+                const selectedDate = new Date(expectedDate.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                // Check if date is in the past
+                if (selectedDate < today) {
+                    showError('dateError', 'Date must be in the future');
+                    expectedDate.classList.add('error');
+                    isValid = false;
+                } else {
+                    // Valid date - show success state
+                    expectedDate.classList.add('valid');
+                }
+            }
+
             return isValid;
         }
 
@@ -325,6 +403,13 @@
             const errorElement = document.getElementById(errorId);
             errorElement.textContent = message;
             errorElement.style.display = 'block';
+        }
+
+        function hideError(errorId) {
+            const errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
         }
 
         function hideAllErrors() {
@@ -353,6 +438,18 @@
                     .map(checkbox => checkbox.value)
                     .join(', ');
 
+                // Format date for better readability
+                const dateValue = document.getElementById('expected_date').value;
+                const formattedDate = new Date(dateValue).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Calculate days until project start
+                const daysUntilStart = Math.ceil((new Date(dateValue) - new Date()) / (1000 * 60 * 60 * 24));
+
                 // Prepare template parameters
                 const templateParams = {
                     from_name: document.getElementById('name').value,
@@ -361,8 +458,11 @@
                     service: selectedServices,
                     description: document.getElementById('description').value || 'Not provided',
                     budget: document.getElementById('budget').value,
+                    expected_date: formattedDate,
+                    raw_date: dateValue,
+                    days_until_start: daysUntilStart > 0 ? `${daysUntilStart} days` : 'Starts today',
                     to_email: 'queryholic@gmail.com',
-                    date: new Date().toLocaleString()
+                    submission_date: new Date().toLocaleString()
                 };
 
                 // Send email using EmailJS
@@ -489,7 +589,8 @@
         }
         
         window.addEventListener('scroll', setActiveNavLink);
-        // Add this to your existing JavaScript
+
+        // Add selected class to checked checkboxes
         document.addEventListener('DOMContentLoaded', function() {
             // Add selected class to checked checkboxes
             const updateCheckboxStyles = () => {
@@ -501,13 +602,6 @@
                         label.classList.remove('selected');
                     }
                 });
-                
-                // Update selected count
-                const selectedCount = document.querySelectorAll('input[name="service"]:checked').length;
-                const countElement = document.querySelector('.selected-count');
-                if (countElement) {
-                    countElement.textContent = selectedCount;
-                }
             };
             
             // Initial update
@@ -517,24 +611,8 @@
             document.querySelectorAll('input[name="service"]').forEach(checkbox => {
                 checkbox.addEventListener('change', updateCheckboxStyles);
             });
-            
-            // Add service icons dynamically
-            const serviceIcons = {
-                'Web Development': 'fas fa-code',
-                'UI/UX': 'fas fa-paint-brush',
-                'Video Editing': 'fas fa-video',
-                'Digital Marketing': 'fas fa-bullhorn'
-            };
-            
-            document.querySelectorAll('.checkbox-label').forEach(label => {
-                const text = label.querySelector('span').textContent.trim();
-                if (serviceIcons[text]) {
-                    const icon = document.createElement('i');
-                    icon.className = serviceIcons[text] + ' service-icon';
-                    label.querySelector('span').insertBefore(icon, label.querySelector('span').firstChild);
-                }
-            });
         });
+        
     </script>
 
     <!-- WHO WE SERVE SECTION -->
@@ -736,14 +814,15 @@
             </div>
         </div>
     </footer>
+    <a href="#" class="quote-float open-quote-modal" aria-label="Get Quote">
+        <img src="https://res.cloudinary.com/drqsvwrjt/image/upload/v1769694504/queryholic_profile-removebg-preview_azlcg4.png" alt="Get Quote">
+    </a>
 
     <!-- WHATSAPP BUTTON -->
     <a href="https://wa.me/919597733152?text=Hello%20I%20want%20to%20get%20quotes" class="whatsapp-container" target="_blank">
-        <span class="whatsapp-text">Get Quotes</span>
+        <span class="whatsapp-text">Contact Us</span>
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat on WhatsApp" class="whatsapp-icon">   
     </a>
 
 </body>
-
 </html>
-

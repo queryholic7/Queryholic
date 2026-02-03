@@ -1,3 +1,181 @@
+/* ===== CLEAN DATE INPUT STYLING ===== */
+.form-group.date-field {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.date-input-container {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.date-input-container input[type="date"] {
+    width: 100%;
+    padding: 14px 45px 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.2s ease;
+    height: 48px;
+}
+
+.date-input-container input[type="date"]:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    background: rgba(102, 126, 234, 0.03);
+}
+
+.date-input-container input[type="date"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+/* Calendar icon */
+.date-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    font-size: 16px;
+}
+
+/* Date picker button styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    opacity: 0;
+    z-index: 2;
+}
+
+/* Custom placeholder */
+.date-input-container input[type="date"]:not(:valid):not(:focus) {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.date-input-container input[type="date"]:not(:valid):not(:focus)::before {
+    content: 'Select a future date';
+    color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Remove default calendar edit styling */
+input[type="date"]::-webkit-datetime-edit {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0 4px;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Remove clear button */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Firefox styling */
+input[type="date"]::-moz-focus-inner {
+    border: 0;
+}
+
+/* Date hint text */
+.date-hint {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 6px;
+    margin-left: 4px;
+    font-style: italic;
+}
+
+/* Error state for date */
+.date-input-container input[type="date"].error {
+    border-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.05);
+}
+
+.date-input-container input[type="date"].error:focus {
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+}
+
+/* Success state for date */
+.date-input-container input[type="date"].valid {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .date-input-container input[type="date"] {
+        padding: 12px 42px 12px 14px;
+        font-size: 14px;
+        height: 44px;
+    }
+    
+    .date-icon {
+        right: 14px;
+        font-size: 15px;
+    }
+    
+    .date-hint {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .date-input-container input[type="date"] {
+        padding: 11px 40px 11px 12px;
+        font-size: 13px;
+        height: 42px;
+    }
+    
+    .date-icon {
+        right: 12px;
+        font-size: 14px;
+    }
+    
+    .date-hint {
+        font-size: 10px;
+    }
+}
+
 /* ===== NAVBAR STYLES ===== */
 header {
     position: fixed;
@@ -2790,4 +2968,48 @@ main{
 .form-group input:focus,
 .form-group textarea:focus {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15), 0 0 20px rgba(102, 126, 234, 0.1);
+}
+/* Floating Quote Button Styles */
+.quote-float {
+    position: fixed;
+    /* Calculated: 20px (WhatsApp bottom) + 60px (WhatsApp height) + 15px (gap) */
+    bottom: 95px; 
+    right: 20px; /* Aligns with the WhatsApp button */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Drop shadow for depth */
+    z-index: 1000; /* Ensures it stays on top of other content */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover Animation */
+.quote-float:hover {
+    transform: scale(1.1); /* Slightly grows when hovered */
+}
+
+/* Logo Image Styling */
+.quote-float img {
+    width: 50px; 
+    height: 50px;
+    object-fit:fill;
+}
+
+/* Mobile Responsiveness (Optional) */
+@media (max-width: 480px) {
+    .quote-float {
+        bottom: 90px; /* Adjust slightly for mobile if needed */
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .quote-float img {
+        width: 45px;
+        height: 45px;
+    }
 }
